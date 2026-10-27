@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test';
+export default defineConfig({testDir:'./tests',workers:1,use:{baseURL:'http://127.0.0.1:8011',launchOptions:{executablePath:process.env.CHROMIUM_PATH||'/usr/bin/chromium',args:['--no-sandbox']},trace:'retain-on-failure'},webServer:{command:'cd .. && AEGIS_DATA_DIR=/tmp/aegis-browser-test .venv/bin/uvicorn backend.main:app --host 127.0.0.1 --port 8011',url:'http://127.0.0.1:8011/api/health',reuseExistingServer:false}});
